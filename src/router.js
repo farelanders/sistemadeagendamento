@@ -10,9 +10,11 @@ import FileController from './app/controllers/FileController';
 import CollaboratorController from './app/controllers/CollaboratorControler';
 import AppointmentController from './app/controllers/AppointmentController';
 import ScheduleController from './app/controllers/ScheduleController';
+import NotificationController from './app/controllers/NotificationController';
 
 import multer from 'multer';
 import multerConfig from './config/multer';
+
 
 const upload = multer(multerConfig);
 
@@ -35,6 +37,12 @@ routes.get('/collaborator', CollaboratorController.index)
 
 //listagem agendamento colaborador
 routes.get('/schedule', ScheduleController.index)
+
+//listagem de notificações
+routes.get('/notifications', NotificationController.index)
+
+//Marcar como lida
+routes.put('/notifications/:id', NotificationController.update)
 
 // Upload de arquivo
 routes.post('/files', upload.single('file') , FileController.store );
